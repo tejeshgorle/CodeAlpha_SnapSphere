@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'assets/images/favicon.png' %}" rel="icon" type="image/png">
+    <title>Sign Up - SnapSphere</title>
+    <link rel="stylesheet" href="{% static 'assets/css/icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/uikit.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/tailwind.css' %}">
+    <style>
+        body {
+            background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+            animation: fadeIn 1.2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: scale(1.02);
+        }
+        .input-field {
+            border: 1px solid #d3d5d8 !important;
+            transition: all 0.3s;
+        }
+        .input-field:focus {
+            border-color: #4a90e2 !important;
+            box-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+        }
+        .signup-button {
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            transition: background 0.3s;
+        }
+        .signup-button:hover {
+            background: linear-gradient(to right, #00f2fe, #4facfe);
+        }
+    </style>
+</head>
+<body>
+    <div class="flex flex-col justify-center items-center h-screen">
+        <div class="text-center mb-6">
+            <h1 class="text-4xl font-bold text-white drop-shadow-lg">SnapSphere</h1>
+        </div>
+        <div class="card max-w-md w-full">
+            <h2 class="text-2xl font-semibold text-center mb-4">Sign Up</h2>
+            <p class="mb-4 text-center text-gray-600">Register to manage your account</p>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Username" class="input-field w-full p-3 mb-3 rounded-md">
+                <input type="email" name="email" placeholder="Email" class="input-field w-full p-3 mb-3 rounded-md">
+                <input type="password" name="password" placeholder="Password" class="input-field w-full p-3 mb-3 rounded-md">
+                <input type="password" name="password2" placeholder="Confirm Password" class="input-field w-full p-3 mb-3 rounded-md">
+                <div class="flex justify-start items-center text-sm mb-4">
+                    <input type="checkbox" id="chekcbox1" checked class="mr-2" style="width:18px; height:18px;">
+                    <label for="chekcbox1">I Agree to the <a href="#" class="text-blue-500 hover:underline">Terms and Conditions</a></label>
+                </div>
+                <button type="submit" class="signup-button w-full py-3 text-white text-lg font-semibold rounded-md">Sign Up</button>
+                <p class="text-center mt-5 text-sm">Already have an account? <a href="/signin" class="text-blue-500 hover:underline">Login</a></p>
+            </form>
+        </div>
+    </div>
+    <script src="{% static 'assets/js/tippy.all.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/uikit.js' %}"></script>
+    <script src="{% static 'assets/js/simplebar.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+</body>
+</html>

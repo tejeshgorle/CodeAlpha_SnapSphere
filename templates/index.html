@@ -1,0 +1,457 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'favicon.png' %}" rel="icon" type="image/png">
+    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'assets/css/icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/uikit.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/tailwind.css' %}">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <style>
+        * {
+            font-family: 'Kumbh Sans', sans-serif;
+            text-decoration:none;
+        }
+        
+        body, p, h1, h2, h3, h4, h5, h6, a, span, div, button, input, textarea {
+            font-family: 'Kumbh Sans', sans-serif !important;
+            text-decoration:none;
+        }  
+        .navbar {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .navbar-brand {
+            font-family: 'Almendra SC', serif;
+            font-size: 1.8rem;
+            color: black;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .navbar-brand:hover {
+            color: #ff4081;
+        }
+
+        .nav-link {
+            font-size: 1.1rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #ff4081 !important;
+            transform: scale(1.1);
+        }
+        .search-bar {
+            position: relative;
+            transition: all 0.3s ease-in-out;
+        }
+    
+        .search-bar input {
+            border-radius: 50px;
+            padding-right: 40px;
+            transition: all 0.3s ease-in-out;
+            border: 2px solid #ccc;
+            width: 200px;
+        }
+    
+        /* Expand Search Box on Focus */
+        .search-bar input:focus {
+            width: 250px;
+            border-color: #ff4081;
+            box-shadow: 0 0 10px rgba(255, 64, 129, 0.4);
+        }
+    
+        /* Search Button Styling */
+        .search-bar button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #555;
+            transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+    
+        /* Hover Effect for Button */
+        .search-bar button:hover {
+            color: #ff4081;
+            transform: scale(1.2);
+        }
+        /* Upload Button */
+        .upload-btn {
+            background-color: #ff4081;
+            color: white;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .upload-btn:hover {
+            background-color: #e60073;
+            transform: scale(1.1);
+        }
+
+        /* Notification & Message Icons */
+        .header-links-item {
+            font-size: 1.4rem;
+            transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        .header-links-item:hover {
+            transform: scale(1.2);
+            color: #ff4081;
+        }
+
+        /* Profile Picture */
+        .profile-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #ff4081;
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Dropdown Styling */
+        .header_dropdown {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 10px;
+            background: white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 10px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .header-links-item:hover + .header_dropdown,
+        .header_dropdown:hover {
+            display: block;
+        }
+        body {
+            background: linear-gradient(to right, #b3e5fc, #81d4fa, #4fc3f7);
+            transition: background 0.5s ease-in-out;
+        }
+        
+        /* Smooth Transition for Containers */
+        .container {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        
+        /* Add Hover Effect to Posts */
+        .bg-white.shadow {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        
+        .bg-white.shadow:hover {
+            transform: scale(1.02);
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Right Sidebar Transition */
+        .lg\\:w-5\\/12 {
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .lg\\:w-5\\/12:hover {
+            transform: scale(1.01);
+        }
+        
+        /* Follow Button Animation */
+        .hover\\:bg-pink-600 {
+            transition: background 0.3s ease-in-out, color 0.3s ease-in-out, border 0.3s ease-in-out;
+        }
+    </style> 
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-3">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+            <!-- Brand Logo -->
+            <a class="navbar-brand stylish-brand" href="#" style="padding-right:50px;">
+                <span class="brand-icon"></span>Snap<span>Sphéré</span>
+            </a>
+            <!-- Navbar Toggler -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navbar Items -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
+                    <li class="nav-item">
+                        <a class="nav-link active text-black" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-black" href="#">Newsfeed</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-black" href="#">Timeline</a>
+                    </li>
+                </ul>
+                <!-- Search Bar -->
+                <form class="d-flex search-bar me-3" role="search" action="/search" method="POST" style="padding-right:150px;">
+                    {% csrf_token %}
+                    <input class="form-control me-2 rounded-pill" type="text" placeholder="Search for username .." name="username">
+                    <button type="submit" style="padding-right:150px;">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+                <!-- Right Side Icons and Upload -->
+                <div class="d-flex align-items-center gap-3">
+                    <!-- Upload Button -->
+                    <a href="#"
+                           class="bg-pink-500 flex font-bold hidden hover:bg-pink-600 hover:text-white inline-block items-center lg:block max-h-10 mr-4 px-4 py-2 rounded shado text-white upload-btn" style="text-decoration:none;">
+                           <ion-icon name="add-circle" class="-mb-1 mr-1 opacity-90 text-xl uilus-circle  me-2" ></ion-icon> Upload Pics
+                    </a>
+                    <div uk-dropdown="pos: top-right;mode:click ; animation: uk-animation-slide-bottom-small" class="header_dropdown">
+                        <div class="px-4 py-3 -mx-5 -mt-4 mb-5 border-b">
+                            <h4>Upload Pics</h4>
+                        </div>
+                        <div class="flex justify-center flex-center text-center">
+                            <div class="flex flex-col choose-upload text-center">
+                                <div class="bg-gray-100 border-2 border-dashed flex flex-col h-24 items-center justify-center relative w-full rounded-lg  ">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-12">
+                                        <path d="M5.5 13a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 13H11V9.413l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13H5.5z" />
+                                        <path d="M9 13h2v5a1 1 0 11-2 0v-5z" />
+                                    </svg>
+                                </div>
+                                <form action="upload" method="POST" enctype="multipart/form-data" >
+                                {% csrf_token %}
+                                <p class="my-3 leading-6"> Upload pics</p>
+                                <div>
+                                    <input type="file" name="image_upload">
+                                    <textarea class="button soft-warning small" name="caption" placeholder="caption..." ></textarea>
+                                    <br>
+                                    <button class="button bg-blue-700" type="submit" >Upload</button>
+                                </div>
+                                </form>
+                            </div>
+
+                            <div class="uk-flex uk-flex-column choose-upload" hidden>
+                                <div class="mx-auto flex flex-col h-24 items-center justify-center relative w-full rounded-lg">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-12">
+                                        <path fill-rule="evenodd" d="M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <p class="my-3 leading-6"> Import videos from YouTube <br> Copy / Paste your video link here </p>
+                                <form class="uk-grid-small" uk-grid>
+                                    <div class="uk-width-expand">
+                                        <input type="text" class="uk-input uk-form-small  bg-gray-200 " style="box-shadow:none" placeholder="Paste link">
+                                    </div>
+                                    <div class="uk-width-auto"> <button type="submit" class="button soft-warning -ml-2">
+                                            Import </button> </div>
+                                </form>
+                                <a href="#" class="uk-text-muted mt-3 uk-link"
+                                    uk-toggle="target: .choose-upload ; animation: uk-animation-slide-left-small, uk-animation-slide-right-medium; queued: true">
+                                    Or Upload Video </a>
+                            </div>
+                        </div>
+                        <div class="px-4 py-3 -mx-5 -mb-4 mt-5 border-t text-sm">
+                            Your Image size must be maxmium 99 MB
+                        </div>
+                    </div>    
+                    <!-- Notification -->
+                    <a href="#" class="header-links-item">
+                        <i class="fa fa-bell"></i>
+                    </a>
+                    <div uk-drop="mode: click;offset: 4" class="header_dropdown">
+                        <h4
+                            class="-mt-5 -mx-5 bg-gradient-to-t from-gray-100 to-gray-50 border-b font-bold px-6 py-3">
+                            Notification </h4>
+                        <ul class="dropdown_scrollbar" data-simplebar>
+                            <li>
+                                <a href="#">
+                                    <div class="drop_avatar"> <img src="{% static 'assets/images/avatars/avatar-1.jpg' %}" alt="">
+                                    </div>
+                                    <div class="drop_content">
+                                        <p> <strong class="text-link" >Amy</strong>  
+                                            <span class="text-link"> is following you  </span>
+                                        </p>
+                                        <span class="time-ago"> 8 hours ago </span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        <a href="#" class="see-all">See all</a>
+                    </div>  
+                    <!-- Messages -->
+                    <a href="#" class="header-links-item">
+                        <i class="fa fa-envelope"></i>
+                    </a>
+                    <div uk-drop="mode: click;offset: 4" class="header_dropdown">
+                        <h4
+                            class="-mt-5 -mx-5 bg-gradient-to-t from-gray-100 to-gray-50 border-b font-bold px-6 py-3">
+                            Messages </h4>
+                        <ul class="dropdown_scrollbar" data-simplebar>
+                            <li>
+                                <a href="#">
+                                    <div class="drop_avatar"> <img src="{% static 'assets/images/avatars/avatar-1.jpg' %}" alt="">
+                                    </div>
+                                    <div class="drop_content">
+                                        <strong> Amy </strong> <time> 8:10 PM</time>
+                                        <p> Hi Thomas </p>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        <a href="#" class="see-all">See all</a>
+                    </div> 
+                    <!-- Profile -->
+                    <div class="d-flex align-items-center gap-2">
+                        <a href="#">
+                            <img src="{{user_profile.profileimg.url}}" class="rounded-circle border border-secondary profile-img" style="width: 40px; height: 40px; object-fit: cover;" alt="Profile">
+                        </a> 
+                        <div uk-drop="mode: click;offset:9" class="header_dropdown profile_dropdown border-t">
+                            <ul class="list-unstyled m-0 p-2">
+                                <li><a href="/settings"> Account setting </a></li>
+                                <li><a href="logout"> Log Out</a></li>
+                            </ul>
+                        </div>
+                    </div>    
+                </div> 
+            </div>
+        </div>
+    </nav>
+    
+            <div class="container m-auto">
+                <div class="lg:flex justify-center lg:space-x-10 lg:space-y-0 space-y-5">
+                    <!-- left sidebar-->
+                    <div class="space-y-5 flex-shrink-0 lg:w-7/12">
+                        <!-- post 1-->
+                        {% for post in posts reversed %}
+                        <div class="bg-white shadow rounded-md  -mx-2 lg:mx-0">
+                            <!-- post header-->
+                            <div class="flex justify-between items-center px-4 py-3">
+                                <div class="flex flex-1 items-center space-x-4">
+                                    <span class="block font-semibold "><a href="/profile/{{post.user}}">@{{post.user}}</a></span>
+                                </div>
+                              <div>
+                                <a href="#"> <i class="icon-feather-more-horizontal text-2xl hover:bg-gray-200 rounded-full p-2 transition -mr-1 "></i> </a>
+                                <div class="bg-white w-56 shadow-md mx-auto p-2 mt-12 rounded-md text-gray-500 hidden text-base border border-gray-100  " uk-drop="mode: hover;pos: top-right">
+                                    <ul class="space-y-1">
+                                      <li> 
+                                          <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md ">
+                                           <i class="uil-share-alt mr-1"></i> Share
+                                          </a> 
+                                      </li>
+                                      <li> 
+                                          <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md ">
+                                           <i class="uil-edit-alt mr-1"></i>  Edit Post 
+                                          </a> 
+                                      </li> 
+                                      <li> 
+                                          <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md ">
+                                           <i class="uil-comment-slash mr-1"></i>   Disable comments
+                                          </a> 
+                                      </li> 
+                                      <li> 
+                                          <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md ">
+                                           <i class="uil-favorite mr-1"></i>  Add favorites 
+                                          </a> 
+                                      </li>
+                                      <li>
+                                        <hr class="-mx-2 my-2 ">
+                                      </li> 
+                                      <li> 
+                                          <a href="#" class="flex items-center px-3 py-2 text-red-500 hover:bg-red-100 hover:text-red-500 rounded-md ">
+                                           <i class="uil-trash-alt mr-1"></i>  Delete Post
+                                          </a> 
+                                      </li>
+                                    </ul>        
+                                </div>
+                              </div>
+                            </div>
+                            <div uk-lightbox>
+                                <a href="{{post.image.url}}">  
+                                    <img src="{{post.image.url}}" alt="">
+                                </a>
+                            </div>
+                            <div class="py-3 px-4 space-y-3"> 
+                                <div class="flex space-x-4 lg:font-bold">
+                                    <a href="/like-post?post_id={{post.id}}" class="flex items-center space-x-2">
+                                        <div class="p-2 rounded-full text-black">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="25" height="25" class="">
+                                                <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
+                                            </svg>
+                                            {% if post.no_of_likes == 0 %}
+                                            <p>No likes</p>
+                                            {% elif post.no_of_likes == 1 %}
+                                            <p>Liked by {{post.no_of_likes}} person</p>
+                                            {% else %}
+                                            <p>Liked by {{post.no_of_likes}} people</p>
+                                            {% endif %}
+                                        </div>   
+                                    </a>
+                                    <a href="#" class="flex items-center space-x-2">
+                                        <div class="p-2 rounded-full text-black">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="25" height="25" class="">
+                                                <path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                    </a> 
+                                    <a href="{{post.image.url}}" class="flex items-center space-x-2 flex-1 justify-end" download>
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="25" height="25" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><g fill="currentColor"><path d="M8.5 1.5A1.5 1.5 0 0 1 10 0h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h6c-.314.418-.5.937-.5 1.5v6h-2a.5.5 0 0 0-.354.854l2.5 2.5a.5.5 0 0 0 .708 0l2.5-2.5A.5.5 0 0 0 10.5 7.5h-2v-6z"/></g></svg>      
+                                    </a>
+                                </div>
+                                <p>
+                                    <a href="/profile/{{post.user}}"><strong>{{post.user}}</strong></a> {{post.caption}}
+                                </p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <!-- right sidebar-->
+                    <div class="lg:w-5/12">
+                        <div class="bg-white  shadow-md rounded-md overflow-hidden">
+                            <div class="bg-gray-50  border-b border-gray-100 flex items-baseline justify-between py-4 px-6 ">
+                                <h2 class="font-semibold text-lg">Who to Follow</h2>
+                                <a href="#"> Refresh</a>
+                            </div> 
+                            <div class="divide-gray-300 divide-gray-50 divide-opacity-50 divide-y px-4 ">
+                                {% for suggestion in suggestions_username_profile_list %}
+                                <div class="flex items-center justify-between py-3">
+                                    <div class="flex flex-1 items-center space-x-4">
+                                        <a href="/profile/{{suggestion.user}}">
+                                            <img src="{{suggestion.profileimg.url}}" class="bg-gray-200 rounded-full w-10 h-10">
+                                        </a>
+                                        <div class="flex flex-col">
+                                            <span class="block capitalize font-semibold"> {{suggestion.user}} </span>
+                                            <span class="block capitalize text-sm"> {{suggestion.bio}} </span>
+                                        </div>
+                                    </div>                                    
+                                    <a href="/profile/{{suggestion.user}}" class="border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 "> View User </a>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>               
+            </div>
+    <script src="{% static 'assets/js/tippy.all.min.js' %}"></script>  
+    <script src="{% static 'assets/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/uikit.js' %}"></script>
+    <script src="{% static 'assets/js/simplebar.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+    <script src="{% static '../../unpkg.com/ionicons%405.2.3/dist/ionicons.js' %}"></script>
+</body>
+</html>
