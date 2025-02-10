@@ -1,4 +1,4 @@
-Link to the template files: https://github.com/tejeshgorle/CodeAlpha_SnapSphere
+Link to the template files: https://github.com/tejeshgorle/codealpha_SnapSphere
 # Snapsphere 📸
 
 Snapsphere is a modern social media platform inspired by Instagram, built with **Django, Tailwind CSS, and JavaScript**. Users can upload images, like posts, follow other users, and engage with a dynamic community.
